@@ -1,11 +1,11 @@
 package main.character.base;
 
 import main.monster.Monster;
-import main.item.Item;
-import main.skill.Skill;
+import main.item.Item;  
 
 public abstract class Character {
     protected String name;
+    protected Job job;
     protected int level;
     protected int exp;
     protected int hp;
@@ -15,11 +15,19 @@ public abstract class Character {
 
     protected final int MAX_LEVEL = 100;
 
+    protected Character(String name) {
+        this.name = name;
+        this.level = 1;
+        this.exp = 100;
+        this.hp = 100;
+        this.mp = 50;
+        this.atk = 10;
+        this.def = 5;
+    }
+
     public abstract void attack(Monster target);
     public abstract void defend(int damage);
     public abstract void useItem(Item<?> item);
-    public abstract void levelUp();
-    public abstract void useSkill(Skill skill);
 
     public String getName() {
         return name;
@@ -41,6 +49,10 @@ public abstract class Character {
         return def;
     }
 
+    public Job getJob() {
+        return job;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -59,5 +71,13 @@ public abstract class Character {
 
     public void setDef(int def) {
         this.def = def;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+        this.hp += job.getBonusHp();
+        this.mp += job.getBonusMp();
+        this.atk += job.getBonusAtk();
+        this.def += job.getBonusDef();
     }
 }

@@ -23,27 +23,10 @@ public abstract class Job {
     public abstract void useSkill(Skill skill);
     public abstract void canUseEqument(Equment equment);
     
-    public String getJobName() {
-        return jobName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getBonusHp() {
-        return bonusHp;
-    }
-
-    public int getBonusMp() {
-        return bonusMp;
-    }
-
-    public int getBonusAtk() {
-        return bonusAtk;
-    }
-
-    public int getBonusDef() {
-        return bonusDef;
-    }
+    public String getJobName() { return jobName; }
+    public String getDescription() { return description; }
+    public int getBonusHp() { return bonusHp; }
+    public int getBonusMp() { return bonusMp; }
+    public int getBonusAtk() { return bonusAtk; }
+    public int getBonusDef() { return bonusDef; }
 }

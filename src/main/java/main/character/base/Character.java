@@ -29,50 +29,19 @@ public abstract class Character {
     public abstract void defend(int damage);
     public abstract void useItem(Item<?> item);
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public int getHp() { return hp; }
+    public int getMp() { return mp; }
+    public int getAtk() { return atk; }
+    public int getDef() { return def; }
+    public Job getJob() { return job; }
 
-    public int getHp() {
-        return hp;
-    }
-
-    public int getMp() {
-        return mp;
-    }
-
-    public int getAtk() {
-        return atk;
-    }
-
-    public int getDef() {
-        return def;
-    }
-
-    public Job getJob() {
-        return job;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setHp(int hp) {
-        this.hp = Math.max(0, hp);
-    }
-
-    public void setMp(int mp) {
-        this.mp = Math.max(0, mp);
-    }
-
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
-
-    public void setDef(int def) {
-        this.def = def;
-    }
-
+    public void setName(String name) { this.name = name; }
+    public void setHp(int hp) { this.hp = Math.max(0, hp); }
+    public void setMp(int mp) { this.mp = Math.max(0, mp); }
+    public void setAtk(int atk) { this.atk = atk; }
+    public void setDef(int def) { this.def = def; }
+    
     public void setJob(Job job) {
         this.job = job;
         this.hp += job.getBonusHp();

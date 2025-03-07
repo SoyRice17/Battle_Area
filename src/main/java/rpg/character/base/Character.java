@@ -8,6 +8,7 @@ import rpg.item.equipments.weapons.Weapon;
 import rpg.item.enums.EquipmentSlot;
 import rpg.monster.Monster;
 import rpg.item.Item;  
+import rpg.skill.Skill;
 import static rpg.util.IO_Manager.print;
 
 public abstract class Character {
@@ -48,6 +49,21 @@ public abstract class Character {
         if (this.job != null) {
             this.job.levelUp(this);
         }
+    }
+
+    public void useSkill(Skill skill) {
+        if (!skill.canUse(this)) {
+            print(this.name + "은(는) " + skill.getName() + "을(를) 사용할 수 없습니다.", true);
+            return;
+        }
+
+        if (this.job != null && !this.job.canUseSkill(skill)) {
+            print(this.name + "은(는) " + skill.getName() + "을(를) 사용할 수 없습니다.", true);
+            return;
+        }
+        this.mp -= skill.getCost();
+        //공격 처리
+        //효과 처리
     }
 
     public void equip(Equipment targetEquipment) {
@@ -93,6 +109,7 @@ public abstract class Character {
     }
 
     public String getName() { return name; }
+    public int getLevel() { return level; }
     public int getHp() { return hp; }
     public int getMp() { return mp; }
     public int getAtk() { return atk; }
@@ -100,6 +117,7 @@ public abstract class Character {
     public Job getJob() { return job; }
 
     public void setName(String name) { this.name = name; }
+    public void setLevel(int level) { this.level = level; }
     public void setHp(int hp) { this.hp = Math.max(0, hp); }
     public void setMp(int mp) { this.mp = Math.max(0, mp); }
     public void setAtk(int atk) { this.atk = atk; }

@@ -1,14 +1,18 @@
 package rpg.character.jobs;
 
+import java.util.Arrays;
+
 import rpg.character.base.Job;
 import rpg.character.base.Character;
 import rpg.item.Equipment;
 import rpg.item.enums.EquipmentAttribute;
 import rpg.skill.Skill;
+import rpg.skill.enums.SkillType;
 import static rpg.util.IO_Manager.print;
+
 public class Adventurer extends Job {
     public Adventurer() {
-        super("Adventurer", "Adventurer", 0, 0, 0, 0);
+        super("Adventurer", "Adventurer", 0, 0, 0, 0, Arrays.asList(SkillType.NORMAL));
     }
 
     @Override
@@ -39,10 +43,4 @@ public class Adventurer extends Job {
         print(character.getName() + "의 레벨이 상승했습니다.", true);
         print("HP: " + character.getHp() + " MP: " + character.getMp() + " ATK: " + character.getAtk() + " DEF: " + character.getDef(), true);
     }
-    @Override
-    public void useSkill(Skill skill) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'useSkill'");
-    }
-    
 }

@@ -1,7 +1,7 @@
 package main.character.jobs;
 
 import main.character.base.Job;
-import main.item.Equment;
+import main.item.Equipment;
 import main.skill.Skill;
 
 public class Adventurer extends Job {
@@ -10,7 +10,7 @@ public class Adventurer extends Job {
     }
 
     @Override
-    public void canUseEqument(Equment equment) {
+    public void canEquip(Equipment equment) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'canUseEqument'");
     }

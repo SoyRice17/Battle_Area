@@ -1,6 +1,6 @@
 package main.character.base;
 
-import main.item.Equment;
+import main.item.Equipment;
 import main.skill.Skill;
 
 public abstract class Job {
@@ -21,7 +21,7 @@ public abstract class Job {
     }
     public abstract void levelUp();
     public abstract void useSkill(Skill skill);
-    public abstract void canUseEqument(Equment equment);
+    public abstract void canEquip(Equipment equment);
     
     public String getJobName() { return jobName; }
     public String getDescription() { return description; }

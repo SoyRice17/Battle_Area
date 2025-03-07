@@ -1,4 +1,6 @@
-package main.item;
+package rpg.item;
+
+import rpg.item.enums.*;
 
 public interface Equipment {
     String getName();

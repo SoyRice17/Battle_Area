@@ -1,7 +1,7 @@
-package main.character.base;
+package rpg.character.base;
 
-import main.monster.Monster;
-import main.item.Item;  
+import rpg.monster.Monster;
+import rpg.item.Item;  
 
 public abstract class Character {
     protected String name;

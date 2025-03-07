@@ -1,4 +1,4 @@
-package main.monster;
+package rpg.monster;
 
 public abstract class Monster {
     protected String name;

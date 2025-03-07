@@ -1,8 +1,9 @@
-package main.character.jobs;
+package rpg.character.jobs;
 
-import main.character.base.Job;
-import main.item.Equipment;
-import main.skill.Skill;
+import rpg.character.base.Job;
+import rpg.item.Equipment;
+import rpg.item.enums.EquipmentType;
+import rpg.skill.Skill;
 
 public class Adventurer extends Job {
     public Adventurer() {
@@ -10,9 +11,11 @@ public class Adventurer extends Job {
     }
 
     @Override
-    public void canEquip(Equipment equment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'canUseEqument'");
+    public boolean canEquip(Equipment equment) {
+        if (equment.getEquipmentType() == EquipmentType.WEAPON) {
+            return true;
+        }
+        return false;
     }
 
     @Override

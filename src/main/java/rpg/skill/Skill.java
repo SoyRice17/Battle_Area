@@ -1,4 +1,4 @@
-package main.skill;
+package rpg.skill;
 
 public interface Skill {
     String getName();

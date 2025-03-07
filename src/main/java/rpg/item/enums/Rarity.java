@@ -1,4 +1,4 @@
-package main.item;
+package rpg.item.enums;
 
 public enum Rarity {
     COMMON, UNCOMMON, RARE, EPIC, LEGENDARY

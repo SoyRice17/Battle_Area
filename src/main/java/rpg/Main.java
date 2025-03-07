@@ -1,4 +1,4 @@
-package main;
+package rpg;
 
 public class Main {
     

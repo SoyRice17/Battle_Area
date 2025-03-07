@@ -1,4 +1,4 @@
-package main.item;
+package rpg.item;
 
 public interface Item<Type> {
     Type getType();

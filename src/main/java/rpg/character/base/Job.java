@@ -19,7 +19,7 @@ public abstract class Job {
         this.bonusAtk = bonusAtk;
         this.bonusDef = bonusDef;
     }
-    public abstract void levelUp();
+    public abstract void levelUp(Character character);
     public abstract void useSkill(Skill skill);
     public abstract boolean canEquip(Equipment equment);
     

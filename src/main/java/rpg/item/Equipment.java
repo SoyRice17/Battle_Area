@@ -12,6 +12,7 @@ public interface Equipment {
 
     EquipmentType getEquipmentType();
     EquipmentSlot getEquipmentSlot();
+    EquipmentAttribute getEquipmentAttribute();
     Rarity getRarity();
     int getDurability();
 }

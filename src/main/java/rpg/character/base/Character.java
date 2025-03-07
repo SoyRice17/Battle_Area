@@ -42,6 +42,13 @@ public abstract class Character {
     public abstract void attack(Monster target);
     public abstract void defend(int damage);
     public abstract void useItem(Item<?> item);
+    
+    public void levelUp() {
+        this.level++;
+        if (this.job != null) {
+            this.job.levelUp(this);
+        }
+    }
 
     public void equip(Equipment targetEquipment) {
         String errorMessage = canEquip(targetEquipment);

@@ -1,15 +1,37 @@
 package rpg.util;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
+
 public class IO_Manager {
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public static void print(String message) {
-        System.out.print(message);
+        try {
+            writer.write(message);
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public static void print(String message, boolean newLine) {
         if (newLine) {
-            System.out.println(message);
+            print(message + "\n");
         } else {
-            System.out.print(message);
+            print(message);
         }
     }
 
+    public static String input() {
+        try {
+            return reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

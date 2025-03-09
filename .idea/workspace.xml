@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="377107bc-8c1b-40a5-86c3-87a09b0d55de" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/rpg/character/base/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rpg/character/base/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rpg/item/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rpg/item/Equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rpg/item/enums/EquipmentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rpg/item/enums/EquipmentType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rpg/character/jobs/Adventurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rpg/character/jobs/Adventurer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741228348155</updated>
       <workItem from="1741228349203" duration="2394000" />
-      <workItem from="1741317095436" duration="567000" />
+      <workItem from="1741317095436" duration="1192000" />
     </task>
     <servers />
   </component>

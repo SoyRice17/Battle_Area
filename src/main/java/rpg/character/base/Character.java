@@ -125,9 +125,9 @@ public abstract class Character {
     
     public void setJob(Job job) {
         this.job = job;
-        this.hp += job.getBonusHp();
-        this.mp += job.getBonusMp();
-        this.atk += job.getBonusAtk();
-        this.def += job.getBonusDef();
+        this.hp = this.level * job.getLevelUpBonusHp();
+        this.mp = this.level * job.getLevelUpBonusMp();
+        this.atk = this.level * job.getLevelUpBonusAtk();
+        this.def = this.level * job.getLevelUpBonusDef();
     }
 }

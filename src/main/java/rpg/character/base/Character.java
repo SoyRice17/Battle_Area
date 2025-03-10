@@ -3,32 +3,29 @@ package rpg.character.base;
 import java.util.HashMap;
 import java.util.Map;
 
+import rpg.battle.Combatant;
 import rpg.item.Equipment;
 import rpg.item.equipments.weapons.Weapon;
 import rpg.item.enums.EquipmentSlot;
-import rpg.monster.Monster;
 import rpg.item.Item;  
 import rpg.skill.Skill;
 import static rpg.util.IO_Manager.print;
 
-public abstract class Character {
-    protected String name;
+public abstract class Character extends Combatant {
     protected Job job;
-    protected int level;
     protected int exp;
-    protected int hp;
-    protected int mp;
-    protected int atk;
-    protected int def;
+    protected int requiredExp;
 
     protected final int MAX_LEVEL = 100;
 
     protected Map<EquipmentSlot, Equipment> equipments;
 
     protected Character(String name) {
+        super();
         this.name = name;
         this.level = 1;
-        this.exp = 100;
+        this.exp = 0;
+        this.requiredExp = 100;
         this.hp = 100;
         this.mp = 50;
         this.atk = 10;
@@ -40,8 +37,6 @@ public abstract class Character {
         }
     }
 
-    public abstract void attack(Monster target);
-    public abstract void defend(int damage);
     public abstract void useItem(Item<?> item);
     
     public void levelUp() {
@@ -108,21 +103,8 @@ public abstract class Character {
         return null;  // 검증 통과
     }
 
-    public String getName() { return name; }
-    public int getLevel() { return level; }
-    public int getHp() { return hp; }
-    public int getMp() { return mp; }
-    public int getAtk() { return atk; }
-    public int getDef() { return def; }
     public Job getJob() { return job; }
 
-    public void setName(String name) { this.name = name; }
-    public void setLevel(int level) { this.level = level; }
-    public void setHp(int hp) { this.hp = Math.max(0, hp); }
-    public void setMp(int mp) { this.mp = Math.max(0, mp); }
-    public void setAtk(int atk) { this.atk = atk; }
-    public void setDef(int def) { this.def = def; }
-    
     public void setJob(Job job) {
         this.job = job;
         this.hp = this.level * job.getLevelUpBonusHp();

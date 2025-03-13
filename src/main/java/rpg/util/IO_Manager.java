@@ -34,4 +34,9 @@ public class IO_Manager {
         }
         return null;
     }
+
+    public static String input(String message) {
+        print(message, false);
+        return input();
+    }
 }

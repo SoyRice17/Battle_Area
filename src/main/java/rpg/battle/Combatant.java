@@ -23,6 +23,10 @@ public abstract class Combatant {
         this.statusEffects = new ArrayList<>();
     }
 
+    public boolean isAlive() {
+        return isAlive;
+    }
+
     public void attack(Combatant target, int damage) {
         int finalDamage = damage + this.atk;  // 기본 공격력 추가
         target.takeDamage(finalDamage);

@@ -46,6 +46,8 @@ public abstract class Monster extends Combatant {
         }
     }
 
+    public abstract Skill getRandomSkill();
+
     public String getDescription() { return description; }
     public int getGiveExp() { return giveExp; }
     public int getGiveGold() { return giveGold; }

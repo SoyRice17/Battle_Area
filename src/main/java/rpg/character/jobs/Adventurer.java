@@ -8,7 +8,7 @@ import rpg.skill.enums.SkillType;
 
 public class Adventurer extends Job {
     public Adventurer() {
-        super("Adventurer", "Adventurer", 10, 10, 1, 1);
+        super("Adventurer", "Adventurer", 2, 10, 10, 1, 1);
     }
 
     @Override

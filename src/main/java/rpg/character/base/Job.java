@@ -10,10 +10,12 @@ public abstract class Job {
     protected int levelUpBonusMp;
     protected int levelUpBonusAtk;
     protected int levelUpBonusDef;
-
-    protected Job(String jobName, String description, int levelUpBonusHp, int levelUpBonusMp, int levelUpBonusAtk, int levelUpBonusDef) {
+    protected int speed;
+    
+    protected Job(String jobName, String description, int speed, int levelUpBonusHp, int levelUpBonusMp, int levelUpBonusAtk, int levelUpBonusDef) {
         this.jobName = jobName;
         this.description = description;
+        this.speed = speed;
         this.levelUpBonusHp = levelUpBonusHp;
         this.levelUpBonusMp = levelUpBonusMp;
         this.levelUpBonusAtk = levelUpBonusAtk;
@@ -43,6 +45,7 @@ public abstract class Job {
     
     public String getJobName() { return jobName; }
     public String getDescription() { return description; }
+    public int getSpeed() { return speed; }
     public int getLevelUpBonusHp() { return levelUpBonusHp; }
     public int getLevelUpBonusMp() { return levelUpBonusMp; }
     public int getLevelUpBonusAtk() { return levelUpBonusAtk; }

@@ -14,6 +14,7 @@ public abstract class Combatant {
     protected int mp;
     protected int atk;
     protected int def;
+    protected int speed;
     protected int level;
     protected boolean isDefending;  // 방어 상태 체크
     protected List<StatusEffect> statusEffects;  // 상태이상 목록
@@ -90,11 +91,12 @@ public abstract class Combatant {
     public int getAtk() { return atk; }
     public int getDef() { return def; }
     public int getLevel() { return level; }
-
+    public int getSpeed() { return speed; }
     public void setName(String name) { this.name = name; }
     public void setHp(int hp) { this.hp = Math.max(0, hp); }
     public void setMp(int mp) { this.mp = Math.max(0, mp); }
     public void setAtk(int atk) { this.atk = atk; }
     public void setDef(int def) { this.def = def; }
     public void setLevel(int level) { this.level = level; }
+    public void setSpeed(int speed) { this.speed = speed; }
 }

@@ -111,5 +111,6 @@ public abstract class Character extends Combatant {
         this.mp = this.level * job.getLevelUpBonusMp();
         this.atk = this.level * job.getLevelUpBonusAtk();
         this.def = this.level * job.getLevelUpBonusDef();
+        this.speed = job.getSpeed();
     }
 }

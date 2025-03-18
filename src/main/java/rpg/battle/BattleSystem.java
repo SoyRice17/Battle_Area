@@ -10,13 +10,15 @@ import java.util.*;
 public class BattleSystem {
     private List<Character> playerParty;
     private List<Monster> enemies;
+    private List<Combatant> combatants;
     private Map<Combatant, BattleAction> turnActions;  // 각 전투 참가자의 행동을 저장
     private int turnCount;
 
     public BattleSystem() {
         this.playerParty = new ArrayList<>();
         this.enemies = new ArrayList<>();
-        this.turnActions = new HashMap<>();
+        this.combatants = new ArrayList<>();
+        this.turnActions = new LinkedHashMap<>();
         this.turnCount = 0;
     }
 
@@ -36,23 +38,32 @@ public class BattleSystem {
             turnCount++;
             print("턴 수: " + turnCount, true);
 
-            // 2. 플레이어 파티의 행동 선택
+            // 2. 전체 전투 참가자 추가
             for (Character character : playerParty) {
                 if (character.isAlive()) {
-                    BattleAction action = getPlayerAction(character);
-                    turnActions.put(character, action);
+                    combatants.add(character);
                 }
             }
-
-            // 3. 적의 행동 선택 (AI)
-            for (Monster enemy : enemies) {
+            for (Monster enemy : enemies) { 
                 if (enemy.isAlive()) {
-                    BattleAction action = getEnemyAction(enemy);
-                    turnActions.put(enemy, action);
+                    combatants.add(enemy);
+                }
+            }
+            // 3. 속도에 따라 정렬
+            Collections.sort(combatants, (a, b) -> b.getSpeed() - a.getSpeed());
+
+            // 4. 행동 정하기
+            for (Combatant combatant : combatants) {
+                if (combatant instanceof Character) {
+                    BattleAction action = getPlayerAction((Character) combatant);
+                    turnActions.put(combatant, action);
+                } else {
+                    BattleAction action = getEnemyAction((Monster) combatant);
+                    turnActions.put(combatant, action);
                 }
             }
 
-            // 4. 행동 실행 (속도나 우선순위에 따라 정렬 가능)
+            // 5. 행동 실행 (속도나 우선순위에 따라 정렬 가능)
             executeTurnActions();
         }
 
@@ -102,20 +113,21 @@ public class BattleSystem {
     }
 
     private void executeTurnActions() {
-        // 모든 행동을 실행
-        for (Map.Entry<Combatant, BattleAction> entry : turnActions.entrySet()) {
-            BattleAction action = entry.getValue();
-            
-            switch (action.getType()) {
-                case ATTACK:
-                    action.getActor().attack(action.getTarget(), action.getActor().getAtk());
-                    break;
-                case DEFEND:
-                    action.getActor().defend();
-                    break;
-                case SKILL:
-                    action.getSkill().use(action.getActor(), action.getTarget());
-                    break;
+        // 속도 순서대로 정렬된 combatants 리스트 활용
+        for (Combatant combatant : combatants) {
+            BattleAction action = turnActions.get(combatant);
+            if (action != null) {
+                switch (action.getType()) {
+                    case ATTACK:
+                        action.getActor().attack(action.getTarget(), action.getActor().getAtk());
+                        break;
+                    case DEFEND:
+                        action.getActor().defend();
+                        break;
+                    case SKILL:
+                        action.getSkill().use(action.getActor(), action.getTarget());
+                        break;
+                }
             }
         }
     }

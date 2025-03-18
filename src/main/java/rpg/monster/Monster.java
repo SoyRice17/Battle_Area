@@ -16,7 +16,7 @@ public abstract class Monster extends Combatant {
 
     protected Map<EquipmentSlot, Equipment> equipments;
     
-    public Monster(String name, String description, int hp, int mp, int atk, int def, int level, int giveExp, int giveGold, Equipment... initialEquipments) {
+    public Monster(String name, String description, int hp, int mp, int atk, int def, int speed, int level, int giveExp, int giveGold, Equipment... initialEquipments) {
         super();
         this.name = name;
         this.description = description;
@@ -24,6 +24,7 @@ public abstract class Monster extends Combatant {
         this.mp = mp;
         this.atk = atk;
         this.def = def;
+        this.speed = speed;
         this.level = level;
         this.equipments = new HashMap<>();
         for (EquipmentSlot slot : EquipmentSlot.values()) {

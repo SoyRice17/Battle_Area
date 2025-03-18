@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import rpg.battle.Combatant;
+import rpg.inventory.Inventory;
 import rpg.item.Equipment;
 import rpg.item.equipments.weapons.Weapon;
 import rpg.item.enums.EquipmentSlot;
-import rpg.item.Item;  
 import rpg.skill.Skill;
 import static rpg.util.IO_Manager.print;
 
@@ -15,6 +15,7 @@ public abstract class Character extends Combatant {
     protected Job job;
     protected int exp;
     protected int requiredExp;
+    protected Inventory inventory;
 
     protected final int MAX_LEVEL = 100;
 
@@ -35,10 +36,12 @@ public abstract class Character extends Combatant {
         for (EquipmentSlot slot : EquipmentSlot.values()) {
             this.equipments.put(slot, null);
         }
-    }
 
-    public abstract void useItem(Item<?> item);
+        this.inventory = new Inventory(30, this);
+    }
     
+    public abstract void specialAbility();
+
     public void levelUp() {
         this.level++;
         if (this.job != null) {
@@ -104,6 +107,9 @@ public abstract class Character extends Combatant {
     }
 
     public Job getJob() { return job; }
+    public Inventory getInventory() {
+        return this.inventory;
+    }
 
     public void setJob(Job job) {
         this.job = job;

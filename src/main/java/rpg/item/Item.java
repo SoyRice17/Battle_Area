@@ -5,5 +5,4 @@ public interface Item<Type> {
     int getPrice();
     String getName();
     String getDescription();
-    void use(Character character);
 }

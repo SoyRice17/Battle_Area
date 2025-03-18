@@ -2,17 +2,16 @@ package rpg.item;
 
 import rpg.item.enums.*;
 
-public interface Equipment {
-    String getName();
-    String getDescription();
+public interface Equipment extends Item<Equipment> {
 
     int getCanUseLevel();
     int getStatBonus();
-    int getPrice();
+    int getMaxDurability();
+    int getDurability();
 
     EquipmentType getEquipmentType();
     EquipmentSlot getEquipmentSlot();
     EquipmentAttribute getEquipmentAttribute();
     Rarity getRarity();
-    int getDurability();
+
 }

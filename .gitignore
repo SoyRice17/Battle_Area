@@ -39,3 +39,6 @@ build/
 
 ### my memo ###
 memo*.txt
+
+### javadocs ###
+docs/

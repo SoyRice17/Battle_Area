@@ -1,4 +1,4 @@
-package rpg.item.enums;
+package rpg.item.enums.equipmentsEnums;
 
 // 투구, 갑옷, 부츠, 장갑, 무기, 방패, 보조 무기, 목걸이, 반지
 // 무기와 보조무기는 같은 슬롯으로 한개만 장착가능

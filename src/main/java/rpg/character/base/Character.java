@@ -6,8 +6,8 @@ import java.util.Map;
 import rpg.battle.Combatant;
 import rpg.inventory.Inventory;
 import rpg.item.Equipment;
+import rpg.item.enums.equipmentsEnums.EquipmentSlot;
 import rpg.item.equipments.weapons.Weapon;
-import rpg.item.enums.EquipmentSlot;
 import rpg.skill.Skill;
 import static rpg.util.IO_Manager.print;
 

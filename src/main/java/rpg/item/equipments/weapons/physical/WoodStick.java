@@ -2,7 +2,7 @@ package rpg.item.equipments.weapons.physical;
 
 import rpg.item.Equipment;
 import rpg.item.equipments.weapons.Weapon;
-import rpg.item.enums.*;
+import rpg.item.enums.equipmentsEnums.*;
 
 public class WoodStick implements Weapon {
     private int durability = 100;

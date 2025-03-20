@@ -1,6 +1,6 @@
 package rpg.item;
 
-import rpg.item.enums.*;
+import rpg.item.enums.equipmentsEnums.*;
 
 public interface Equipment extends Item<Equipment> {
 

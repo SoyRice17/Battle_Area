@@ -2,7 +2,7 @@ package rpg.character.jobs;
 
 import rpg.character.base.Job;
 import rpg.item.Equipment;
-import rpg.item.enums.EquipmentAttribute;
+import rpg.item.enums.equipmentsEnums.EquipmentAttribute;
 import rpg.skill.Skill;
 import rpg.skill.enums.SkillType;
 

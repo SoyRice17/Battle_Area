@@ -5,7 +5,7 @@ import java.util.Map;
 
 import rpg.battle.Combatant;
 import rpg.item.Equipment;
-import rpg.item.enums.EquipmentSlot;
+import rpg.item.enums.equipmentsEnums.EquipmentSlot;
 import rpg.skill.Skill;
 public abstract class Monster extends Combatant {
     protected String description;

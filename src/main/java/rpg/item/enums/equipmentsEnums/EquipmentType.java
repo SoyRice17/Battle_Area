@@ -1,4 +1,4 @@
-package rpg.item.enums;
+package rpg.item.enums.equipmentsEnums;
 
 // 모든 장비는 3개 이상의의 타입을 가짐
 // 1. 가장 상위 개념

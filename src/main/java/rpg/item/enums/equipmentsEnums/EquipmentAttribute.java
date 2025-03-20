@@ -1,4 +1,4 @@
-package rpg.item.enums;
+package rpg.item.enums.equipmentsEnums;
 
 public enum EquipmentAttribute {
     // 무기 속성

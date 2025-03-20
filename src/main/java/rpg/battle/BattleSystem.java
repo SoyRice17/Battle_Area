@@ -75,6 +75,7 @@ public class BattleSystem {
         print("1. 공격", true);
         print("2. 방어", true);
         print("3. 스킬", true);
+        print("4. 아이템", true);
         
         int choice = Integer.parseInt(input("선택: "));
         Combatant target = null;
@@ -89,10 +90,31 @@ public class BattleSystem {
                 Skill skill = selectSkill(character);
                 target = selectTarget(enemies);
                 return new BattleAction(ActionType.SKILL, character, target, skill);
+            case 4:
+                if (character.getInventory().getItemCount() == 0) {
+                    print("아이템이 없습니다.", true);
+                    return getPlayerAction(character);
+                }
+                print(character.getInventory().getItems());
+                int itemIndex = -1;
+                while (itemIndex < 0 || itemIndex >= character.getInventory().getItemCount()) {
+                    try {
+                        String itemChoice = input("사용할 아이템의 번호를 선택하세요: ");
+                        itemIndex = Integer.parseInt(itemChoice) - 1;
+                    } catch (NumberFormatException e) {
+                        print("올바른 숫자를 입력해주세요!", true);
+                    }
+                }
+                if (itemIndex >= 0 && itemIndex < character.getInventory().getItemCount()) {
+                    String itemName = character.getInventory().getItemName(itemIndex);
+                    return new BattleAction(ActionType.ITEM, character, target, itemName);
+                } else {
+                    print("잘못된 선택입니다. 다시 선택해주세요.", true);
+                    return getPlayerAction(character);
+                }
             default:
-                print("잘못된 선택입니다. 기본 공격을 실행합니다.", true);
-                target = selectTarget(enemies);
-                return new BattleAction(ActionType.ATTACK, character, target);
+                print("잘못된 선택입니다. 다시 선택해주세요.", true);
+                return getPlayerAction(character);
         }
     }
 
@@ -126,6 +148,16 @@ public class BattleSystem {
                         break;
                     case SKILL:
                         action.getSkill().use(action.getActor(), action.getTarget());
+                        break;
+                    case ITEM:
+                        // 여기서 캐릭터인지 확인하고 인벤토리의 useItem 호출
+                        if (action.getActor() instanceof Character) {
+                            Character character = (Character) action.getActor();
+                            character.getInventory().useItem(action.getItemName());
+                        } else {
+                            // 몬스터인 경우 (처리하지 않거나 오류 메시지 출력) 사용될일 없음
+                            print(action.getActor().getName() + "은(는) 아이템을 사용할 수 없습니다.", true);
+                        }
                         break;
                 }
             }

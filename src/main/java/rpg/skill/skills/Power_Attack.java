@@ -3,13 +3,21 @@ package rpg.skill.skills;
 import java.util.Arrays;
 import java.util.List;
 
-import rpg.character.base.Character;
+import rpg.battle.Combatant;
 import rpg.skill.Skill;
 import rpg.skill.enums.SkillEffect;
 import rpg.skill.enums.SkillType;
 import rpg.skill.enums.TargetType;
 
 public class Power_Attack implements Skill {
+    @Override
+    public void use(Combatant user, Combatant target) {
+        System.out.println(user.getName() + "이(가) 파워 어택을 사용했습니다.");
+        target.takeDamage(getPower());
+        user.setMp(user.getMp() - getCost());
+        // 스턴 이펙트
+    }
+
     @Override
     public String getName() {
         return "Power Attack";
@@ -61,12 +69,12 @@ public class Power_Attack implements Skill {
     }
 
     @Override
-    public boolean canUse(Character character) {
-        if (character.getLevel() < getCanUseLevel()) {
+    public boolean canUse(Combatant combatant) {
+        if (combatant.getLevel() < getCanUseLevel()) {
             System.out.println("해당 스킬을 사용할 수 없습니다.");
             return false;
         }
-        if (character.getMp() < getCost()) {
+        if (combatant.getMp() < getCost()) {
             System.out.println("마나가 부족합니다.");
             return false;
         }

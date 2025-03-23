@@ -1,6 +1,5 @@
 package rpg.item.equipments.weapons.physical;
 
-import rpg.item.Equipment;
 import rpg.item.equipments.weapons.Weapon;
 import rpg.item.enums.equipmentsEnums.*;
 

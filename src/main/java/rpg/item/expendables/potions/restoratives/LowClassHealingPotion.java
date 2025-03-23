@@ -3,11 +3,12 @@ package rpg.item.expendables.potions.restoratives;
 import rpg.item.enums.expendablesEnums.PotionType;
 import rpg.item.expendables.potions.Potion;
 import rpg.battle.Combatant;
-import rpg.item.Expendable;
 import rpg.skill.enums.TargetType;
 
 public class LowClassHealingPotion implements Potion {
-    
+
+
+
     @Override
     public int getPrice() {
         return 10;

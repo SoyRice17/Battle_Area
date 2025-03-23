@@ -22,15 +22,15 @@ public abstract class Job {
         this.levelUpBonusDef = levelUpBonusDef;
     }
     public void levelUp(Character character){
-        character.setHp(character.getHp() + levelUpBonusHp);
-        character.setMp(character.getMp() + levelUpBonusMp);
+        character.setFullHp(character.getFullHp() + levelUpBonusHp);
+        character.setFullMp(character.getFullMp() + levelUpBonusMp);
         character.setAtk(character.getAtk() + levelUpBonusAtk);
         character.setDef(character.getDef() + levelUpBonusDef);
 
         print(character.getName() + "의 레벨이 상승했습니다.", true);
         print(
-        "HP: " + character.getHp() + 
-        " MP: " + character.getMp() + 
+        "HP: " + character.getFullHp() + 
+        " MP: " + character.getFullMp() + 
         " ATK: " + character.getAtk() + 
         " DEF: " + character.getDef(), true);
     }

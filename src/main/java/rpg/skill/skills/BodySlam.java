@@ -13,7 +13,7 @@ public class BodySlam implements Skill {
         System.out.println(user.getName() + "이(가) 몸통박치기를 사용했습니다.");
         target.takeDamage(getPower());
         user.takeDamage(getPower() / 2);
-        user.setMp(user.getMp() - getCost());
+        user.setCurrentMp(user.getCurrentMp() - getCost());
     }
 
     @Override

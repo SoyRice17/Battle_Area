@@ -27,8 +27,10 @@ public abstract class Character extends Combatant {
         this.level = 1;
         this.exp = 0;
         this.requiredExp = 100;
-        this.hp = 100;
-        this.mp = 50;
+        this.currentHp = 100;
+        this.fullHp = 100;
+        this.currentMp = 50;
+        this.fullMp = 50;
         this.atk = 10;
         this.def = 5;
 
@@ -59,7 +61,7 @@ public abstract class Character extends Combatant {
             print(this.name + "은(는) " + skill.getName() + "을(를) 사용할 수 없습니다.", true);
             return;
         }
-        this.mp -= skill.getCost();
+        this.currentMp -= skill.getCost();
         //공격 처리
         //효과 처리
     }
@@ -113,8 +115,8 @@ public abstract class Character extends Combatant {
 
     public void setJob(Job job) {
         this.job = job;
-        this.hp = this.level * job.getLevelUpBonusHp();
-        this.mp = this.level * job.getLevelUpBonusMp();
+        this.fullHp = this.level * job.getLevelUpBonusHp();
+        this.fullMp = this.level * job.getLevelUpBonusMp();
         this.atk = this.level * job.getLevelUpBonusAtk();
         this.def = this.level * job.getLevelUpBonusDef();
         this.speed = job.getSpeed();

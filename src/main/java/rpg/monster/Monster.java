@@ -20,8 +20,10 @@ public abstract class Monster extends Combatant {
         super();
         this.name = name;
         this.description = description;
-        this.hp = hp;
-        this.mp = mp;
+        this.currentHp = hp;
+        this.fullHp = hp;
+        this.currentMp = mp;
+        this.fullMp = mp;
         this.atk = atk;
         this.def = def;
         this.speed = speed;

@@ -14,7 +14,7 @@ public class Power_Attack implements Skill {
     public void use(Combatant user, Combatant target) {
         System.out.println(user.getName() + "이(가) 파워 어택을 사용했습니다.");
         target.takeDamage(getPower());
-        user.setMp(user.getMp() - getCost());
+        user.setCurrentMp(user.getCurrentMp() - getCost());
         // 스턴 이펙트
     }
 
@@ -74,7 +74,7 @@ public class Power_Attack implements Skill {
             System.out.println("해당 스킬을 사용할 수 없습니다.");
             return false;
         }
-        if (combatant.getMp() < getCost()) {
+        if (combatant.getCurrentMp() < getCost()) {
             System.out.println("마나가 부족합니다.");
             return false;
         }

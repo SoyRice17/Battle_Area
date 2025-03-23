@@ -170,7 +170,7 @@ public class BattleSystem {
         print("\n대상을 선택하세요:", true);
         for (int i = 0; i < targets.size(); i++) {
             Combatant target = targets.get(i);
-            print((i + 1) + ". " + target.getName() + " (HP: " + target.getHp() + ")", true);
+            print((i + 1) + ". " + target.getName() + " (HP: " + target.getCurrentHp() + "/" + target.getFullHp() + ")", true);
         }
 
         int choice = Integer.parseInt(input("선택: ")) - 1;

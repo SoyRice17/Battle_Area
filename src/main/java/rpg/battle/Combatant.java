@@ -10,8 +10,10 @@ import java.util.Iterator;
 public abstract class Combatant {
     protected String name;
     protected boolean isAlive;
-    protected int hp;
-    protected int mp;
+    protected int currentHp;
+    protected int currentMp;
+    protected int fullHp;
+    protected int fullMp;
     protected int atk;
     protected int def;
     protected int speed;
@@ -76,25 +78,29 @@ public abstract class Combatant {
             finalDamage = Math.max(0, damage - this.def);  // 일반 방어력만 적용
         }
 
-        this.hp -= finalDamage;
+        this.currentHp -= finalDamage;
         print(this.name + "이(가) " + finalDamage + "의 데미지를 받았습니다.", true);
         
-        if (this.hp <= 0) {
+        if (this.currentHp <= 0) {
             this.isAlive = false;
             print(this.name + "이(가) 쓰러졌습니다!", true);
         }
     }
 
     public String getName() { return name; }
-    public int getHp() { return hp; }
-    public int getMp() { return mp; }
+    public int getCurrentHp() { return currentHp; }
+    public int getCurrentMp() { return currentMp; }
+    public int getFullHp() { return fullHp; }
+    public int getFullMp() { return fullMp; }
     public int getAtk() { return atk; }
     public int getDef() { return def; }
     public int getLevel() { return level; }
     public int getSpeed() { return speed; }
     public void setName(String name) { this.name = name; }
-    public void setHp(int hp) { this.hp = Math.max(0, hp); }
-    public void setMp(int mp) { this.mp = Math.max(0, mp); }
+    public void setCurrentHp(int currentHp) { this.currentHp = Math.max(0, currentHp); }
+    public void setCurrentMp(int currentMp) { this.currentMp = Math.max(0, currentMp); }
+    public void setFullHp(int fullHp) { this.fullHp = fullHp; }
+    public void setFullMp(int fullMp) { this.fullMp = fullMp; }
     public void setAtk(int atk) { this.atk = atk; }
     public void setDef(int def) { this.def = def; }
     public void setLevel(int level) { this.level = level; }

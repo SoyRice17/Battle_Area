@@ -1,7 +1,7 @@
-package rpg.character.characters;
+package rpg.character.player;
 
-import rpg.character.base.Character;
-import rpg.character.jobs.Adventurer;
+import rpg.character.Character;
+import rpg.character.job.Adventurer;
 
 public class MainCharacter extends Character {
     public MainCharacter(String name) {
@@ -15,4 +15,4 @@ public class MainCharacter extends Character {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'specialAbility'");
     }
-}
+} 

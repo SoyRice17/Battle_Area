@@ -1,8 +1,10 @@
-package rpg.character.base;
+package rpg.character.job;
 
+import rpg.character.Character;
 import rpg.item.Equipment;
 import rpg.skill.Skill;
 import static rpg.util.IO_Manager.print;
+
 public abstract class Job {
     protected String jobName;
     protected String description;
@@ -50,4 +52,4 @@ public abstract class Job {
     public int getLevelUpBonusMp() { return levelUpBonusMp; }
     public int getLevelUpBonusAtk() { return levelUpBonusAtk; }
     public int getLevelUpBonusDef() { return levelUpBonusDef; }
-}
+} 

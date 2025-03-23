@@ -1,6 +1,5 @@
-package rpg.character.jobs;
+package rpg.character.job;
 
-import rpg.character.base.Job;
 import rpg.item.Equipment;
 import rpg.item.enums.equipmentsEnums.EquipmentAttribute;
 import rpg.skill.Skill;
@@ -28,4 +27,4 @@ public class Adventurer extends Job {
     public boolean canUseSkill(Skill skill) {
         return skill.getSkillType() == SkillType.NORMAL;
     }
-}
+} 

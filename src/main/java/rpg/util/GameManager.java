@@ -1,6 +1,6 @@
 package rpg.util;
 
-import rpg.character.base.Character;
+import rpg.character.Character;
 import static rpg.util.IO_Manager.*;
 
 public class GameManager {

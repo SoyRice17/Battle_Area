@@ -1,14 +1,14 @@
-package rpg.character.base;
+package rpg.character;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import rpg.battle.Combatant;
+import rpg.character.job.Job;
 import rpg.inventory.Inventory;
 import rpg.item.Equipment;
 import rpg.item.enums.equipmentsEnums.EquipmentSlot;
 import rpg.item.equipments.weapons.Weapon;
-import rpg.skill.Skill;
 import static rpg.util.IO_Manager.print;
 
 public abstract class Character extends Combatant {
@@ -106,4 +106,4 @@ public abstract class Character extends Combatant {
         this.def = this.level * job.getLevelUpBonusDef();
         this.speed = job.getSpeed();
     }
-}
+} 

@@ -1,6 +1,6 @@
 package rpg.battle;
 
-import rpg.character.base.Character;
+import rpg.character.Character;
 import rpg.monster.Monster;
 import rpg.skill.Skill;
 import static rpg.util.IO_Manager.*;

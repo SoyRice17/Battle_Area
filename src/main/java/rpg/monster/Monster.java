@@ -8,7 +8,7 @@ import rpg.battle.Combatant;
 import rpg.item.Equipment;
 import rpg.item.enums.equipmentsEnums.EquipmentSlot;
 import rpg.skill.Skill;
-import static rpg.util.IO_Manager.print;
+ 
 public abstract class Monster extends Combatant {
     protected String description;
     protected int giveExp;

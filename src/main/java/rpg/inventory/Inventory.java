@@ -3,7 +3,7 @@ package rpg.inventory;
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.character.base.Character;
+import rpg.character.Character;
 import rpg.item.Item;
 import rpg.item.Equipment;
 import static rpg.util.IO_Manager.print;

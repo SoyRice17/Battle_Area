@@ -6,6 +6,15 @@ import rpg.skill.enums.TargetType;
 /**
  * 소모품 아이템 인터페이스
  * 한 번 사용하면 소모되는 모든 아이템의 기본 인터페이스
+ * 
+ * <p>
+ * 주요 기능:
+ * <ul>
+ *  <li>아이템 사용</li>
+ *  <li>아이템 사용 가능 레벨 확인</li>
+ *  <li>아이템 사용 가능 여부 확인</li>
+ *  <li>아이템 사용 타겟 확인</li>
+ * </ul>
  */
 public interface Expendable extends Item {
     /**

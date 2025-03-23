@@ -7,6 +7,26 @@ import java.util.ArrayList;
 
 import rpg.skill.skills.*;
 
+/**
+ * 모든 스킬 레코드를 관리하는 클래스입니다.
+ * 싱글톤 패턴으로 구현되어 있습니다.
+ * 
+ * <p>
+ * 주요 기능:
+ * <ul>
+ *  <li>스킬 등록</li>
+ *  <li>스킬 레벨별 등록</li>
+ *  <li>스킬 조회</li>
+ *  <li>스킬 레벨별 조회</li>
+    *  <li>스킬 존재 여부 확인</li>
+ * </ul>
+ * 
+ * <p>
+ * 사용 예시:
+ * <pre>
+ *     AkashicRecords akashicRecords = AkashicRecords.getInstance();
+ * </pre>
+ */
 public class AkashicRecords {
     private static AkashicRecords instance;
     private Map<String, Skill> records = new HashMap<>();

@@ -7,6 +7,21 @@ import static rpg.util.IO_Manager.*;
 
 import java.util.*;
 
+/**
+ * RPG 게임의 전투 시스템을 관리하는 클래스입니다.
+ * 플레이어 파티와 적 몬스터 간의 턴제 전투를 처리합니다.
+ * <p>
+ * 주요 기능:
+ * - 턴 기반 전투 로직 처리
+ * - 캐릭터와 몬스터의 행동 관리
+ * - 전투 결과 판정
+ * <p>
+ * 사용 예시:
+ * <pre>
+ *     BattleSystem battle = new BattleSystem();
+ *     battle.startBattle(playerParty, enemyGroup);
+ * </pre>
+ */
 public class BattleSystem {
     private List<Character> playerParty;
     private List<Monster> enemies;
@@ -22,6 +37,13 @@ public class BattleSystem {
         this.turnCount = 0;
     }
 
+    /**
+     * 전투를 시작합니다.
+     * 플레이어 파티와 적 몬스터 그룹을 받아 전투 루프를 실행합니다.
+     *
+     * @param party 플레이어 캐릭터 목록
+     * @param enemies 적 몬스터 목록
+     */
     public void startBattle(List<Character> party, List<Monster> enemies) {
         this.playerParty = party;
         this.enemies = enemies;
@@ -70,6 +92,16 @@ public class BattleSystem {
         announceResult();
     }
 
+    /**
+     * 플레이어의 행동을 선택합니다.
+     * 공격, 방어, 스킬 사용, 아이템 사용 중 하나를 선택합니다.
+     * 공격을 선택할 경우 대상을 선택합니다.
+     * 스킬 사용 시 사용할 스킬을 스킬목록을 출력하고 선택합니다.
+     * 아이템 사용 시 아이템 목록을 출력하고 사용할 아이템을 선택합니다.
+     *
+     * @param character 플레이어 캐릭터
+     * @return 선택된 행동
+     */
     private BattleAction getPlayerAction(Character character) {
         print("\n" + character.getName() + "의 행동을 선택하세요:", true);
         print("1. 공격", true);
@@ -118,6 +150,13 @@ public class BattleSystem {
         }
     }
 
+    /**
+     * 적 몬스터의 행동을 선택합니다.
+     * 랜덤으로 스킬 사용, 방어, 공격 중 하나를 선택합니다.
+     *
+     * @param enemy 적 몬스터
+     * @return 선택된 행동
+     */
     private BattleAction getEnemyAction(Monster enemy) {
         Random random = new Random();
         int action = random.nextInt(100);
@@ -134,6 +173,10 @@ public class BattleSystem {
         }
     }
 
+    /**
+     * 각 전투 참가자의 행동을 실행합니다.
+     * 속도 순서대로 정렬된 참가자 목록에 따라 공격, 방어, 스킬 사용, 아이템 사용 등의 행동을 수행합니다.
+     */
     private void executeTurnActions() {
         // 속도 순서대로 정렬된 combatants 리스트 활용
         for (Combatant combatant : combatants) {
@@ -164,6 +207,13 @@ public class BattleSystem {
         }
     }
 
+    /**
+     * 대상을 선택합니다.
+     * 대상 목록을 출력하고 선택합니다.
+     *
+     * @param targets 대상 목록
+     * @return 선택된 대상
+     */
     private Combatant selectTarget(List<? extends Combatant> targets) {
         if (targets.size() == 1) return targets.get(0);
 
@@ -177,6 +227,13 @@ public class BattleSystem {
         return targets.get(Math.max(0, Math.min(choice, targets.size() - 1)));
     }
 
+    /**
+     * 캐릭터의 스킬을 선택합니다.
+     * 스킬 목록을 출력하고 선택합니다.
+     *
+     * @param character 캐릭터
+     * @return 선택된 스킬
+     */
     private Skill selectSkill(Character character) {
         Skill selectedSkill = null;
         List<Skill> learnedSkills = character.getLearnedSkills();
@@ -194,6 +251,12 @@ public class BattleSystem {
         return selectedSkill;
     }
 
+    /**
+     * 전투가 끝났는지 확인합니다.
+     * 모든 플레이어가 죽었거나 모든 적이 죽었는지 확인합니다.
+     *
+     * @return 전투가 끝났는지 여부
+     */
     private boolean isBattleEnd() {
         boolean allPlayersDead = playerParty.stream().noneMatch(Combatant::isAlive);
         boolean allEnemiesDead = enemies.stream().noneMatch(Combatant::isAlive);

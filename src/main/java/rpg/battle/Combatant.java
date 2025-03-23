@@ -8,6 +8,26 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import rpg.skill.AkashicRecords;
 
+/**
+ * 전투 참가자를 나타내는 추상 클래스입니다.
+ * 캐릭터와 몬스터가 상속받아 사용합니다.
+ * 
+ * <p>
+ * 주요 기능:
+ * <ul>
+ *  <li>상태이상 관리</li>
+ *  <li>스킬 관리</li>
+ *  <li>방어 상태 관리</li>
+ *  <li>체력, 마나 관리</li>
+ * </ul>
+ * 
+ * <p>
+ * 사용 예시:
+ * <pre>
+ *     Combatant combatant = new Character("캐릭터 이름");
+ * </pre>
+ * 
+ */
 public abstract class Combatant {
     protected String name;
     protected boolean isAlive;
@@ -42,6 +62,12 @@ public abstract class Combatant {
         print(this.name + "이(가) 방어 태세를 취했습니다.", true);
     }
 
+    /**
+     * 스킬을 배우는 메소드입니다.
+     * 스킬이 존재하고 레벨이 충분하면 스킬을 배울 수 있습니다.
+     * 
+     * @param skill 배울 스킬
+     */
     public void learnSkill(Skill skill) {
         if(AkashicRecords.getInstance().isSkillExist(skill)) {
             if(skill.getCanUseLevel() <= this.level) {
@@ -59,6 +85,12 @@ public abstract class Combatant {
         }
     }
 
+    /**
+     * 스킬을 배우는 메소드입니다.
+     * 스킬 이름을 받아 스킬을 배울 수 있습니다.
+     * 
+     * @param skillName 배울 스킬 이름
+     */
     public void learnSkill(String skillName) {
         learnSkill(AkashicRecords.getInstance().getSkill(skillName));
     }
@@ -67,9 +99,11 @@ public abstract class Combatant {
         return learnedSkills.contains(skill);
     }
     
-    // 턴 시작시 호출되는 메소드
+    /**
+     * 턴 시작시 호출되는 메소드입니다.
+     * 매턴 모든 상태이상 효과 적용
+     */
     public void onTurnStart() {
-        // 모든 상태이상 효과 적용
         Iterator<StatusEffect> iterator = statusEffects.iterator();
         while (iterator.hasNext()) {
             StatusEffect effect = iterator.next();
@@ -81,7 +115,12 @@ public abstract class Combatant {
         }
     }
 
-    // 상태이상 추가 메소드
+    /**
+     * 상태이상 추가 메소드입니다.
+     * 같은 타입의 상태이상이 있다면 갱신
+     * 
+     * @param effect 추가할 상태이상
+     */
     public void addStatusEffect(StatusEffect effect) {
         // 같은 타입의 상태이상이 있다면 갱신
         statusEffects.removeIf(e -> e.getStatusType() == effect.getStatusType());

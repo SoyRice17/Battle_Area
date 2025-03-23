@@ -1,6 +1,22 @@
 package rpg.character.status.enums;
 
-
+/**
+ * 상태 타입을 나타내는 열거형입니다.
+ * 
+ * <p>
+ * 주요 기능:
+ * <ul>
+ *  <li>상태 타입 이름 반환</li>
+ *  <li>상태 타입 설명 반환</li>
+ *  <li>상태 타입 버프 여부 반환</li>
+ * </ul>
+ * 
+ * <p>
+ * 사용 예시:
+ * <pre>
+ *     StatusType statusType = StatusType.POISON;
+ * </pre>
+ */
 public enum StatusType {
     
     // 디버프 
@@ -20,6 +36,13 @@ public enum StatusType {
     private final String description;
     private final boolean isBuff;
 
+    /**
+     * 상태 타입을 생성하는 생성자입니다.
+     * 
+     * @param name 상태 타입 이름
+     * @param description 상태 타입 설명
+     * @param isBuff 상태 타입 버프 여부
+     */
     StatusType(String name, String description, boolean isBuff) {
         this.name = name;
         this.description = description;

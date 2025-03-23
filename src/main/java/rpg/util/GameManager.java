@@ -3,6 +3,20 @@ package rpg.util;
 import rpg.character.Character;
 import static rpg.util.IO_Manager.*;
 
+/**
+ * 게임 매니저 클래스입니다.
+ * 
+ * 싱글톤 패턴으로 구현되어 있습니다.
+ * 
+ * <p>
+ * 주요 기능:
+ * <ul>
+ *  <li>게임 시작</li>
+ *  <li>게임 종료</li>
+ *  <li>게임 상태 확인</li>
+ *  <li>게임 상태 설정</li>
+ * </ul>
+ */
 public class GameManager {
     private Character player;
     private boolean isGameRunning;
@@ -19,10 +33,14 @@ public class GameManager {
         return GameManagerHolder.INSTANCE;
     }
 
+    /**
+     * 게임을 시작합니다.
+     * 
+     * @throws IllegalStateException 게임이 이미 실행중인 경우 예외 발생
+     */
     public void startGame() {
         if (isGameRunning) {
-            print("게임이 이미 실행중입니다.", true);
-            return;
+            throw new IllegalStateException("게임이 이미 실행중입니다.");
         }
 
         isGameRunning = true;
@@ -30,6 +48,10 @@ public class GameManager {
         gameLoop();
     }
 
+    /**
+     * 게임을 초기화합니다.
+     * 캐릭터를 생성합니다
+     */
     private void initializeGame() {
         print("=== RPG 게임 시작 ===", true);
         // 캐릭터 생성 로직

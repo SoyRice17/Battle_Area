@@ -2,11 +2,13 @@ package rpg.monster;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import rpg.battle.Combatant;
 import rpg.item.Equipment;
 import rpg.item.enums.equipmentsEnums.EquipmentSlot;
 import rpg.skill.Skill;
+import static rpg.util.IO_Manager.print;
 public abstract class Monster extends Combatant {
     protected String description;
     protected int giveExp;
@@ -41,15 +43,15 @@ public abstract class Monster extends Combatant {
         }
     }
 
-    public abstract void useSkill(Skill skill);
+    public Skill getRandomSkill() {
+        return learnedSkills.get(new Random().nextInt(learnedSkills.size()));
+    }
 
     public void setEquipment(Equipment equipment) {
         if (equipment != null) {
             this.equipments.put(equipment.getEquipmentSlot(), equipment);
         }
     }
-
-    public abstract Skill getRandomSkill();
 
     public String getDescription() { return description; }
     public int getGiveExp() { return giveExp; }

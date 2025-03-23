@@ -51,21 +51,6 @@ public abstract class Character extends Combatant {
         }
     }
 
-    public void useSkill(Skill skill) {
-        if (!skill.canUse(this)) {
-            print(this.name + "은(는) " + skill.getName() + "을(를) 사용할 수 없습니다.", true);
-            return;
-        }
-
-        if (this.job != null && !this.job.canUseSkill(skill)) {
-            print(this.name + "은(는) " + skill.getName() + "을(를) 사용할 수 없습니다.", true);
-            return;
-        }
-        this.currentMp -= skill.getCost();
-        //공격 처리
-        //효과 처리
-    }
-
     public void equip(Equipment targetEquipment) {
         String errorMessage = canEquip(targetEquipment);
         if (errorMessage != null) {

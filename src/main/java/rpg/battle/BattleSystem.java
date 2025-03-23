@@ -178,8 +178,20 @@ public class BattleSystem {
     }
 
     private Skill selectSkill(Character character) {
-        // 스킬 선택 로직 구현 예정
-        return null;  // 임시 반환
+        Skill selectedSkill = null;
+        List<Skill> learnedSkills = character.getLearnedSkills();
+        for (int i = 0; i < learnedSkills.size(); i++) {
+            print((i + 1) + ". " + learnedSkills.get(i).getName(), true);
+        }
+        while (selectedSkill == null) {
+            try {
+                int skillIndex = Integer.parseInt(input("사용할 스킬을 선택하세요: ")) - 1;
+                selectedSkill = learnedSkills.get(skillIndex);
+            } catch (NumberFormatException e) {
+                print("올바른 숫자를 입력해주세요!", true);
+            }
+        }
+        return selectedSkill;
     }
 
     private boolean isBattleEnd() {

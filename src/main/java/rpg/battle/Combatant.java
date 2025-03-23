@@ -6,6 +6,7 @@ import static rpg.util.IO_Manager.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import rpg.skill.AkashicRecords;
 
 public abstract class Combatant {
     protected String name;
@@ -20,6 +21,7 @@ public abstract class Combatant {
     protected int level;
     protected boolean isDefending;  // 방어 상태 체크
     protected List<StatusEffect> statusEffects;  // 상태이상 목록
+    protected List<Skill> learnedSkills;  // 스킬 목록
     
     protected Combatant() {
         this.isAlive = true;
@@ -40,9 +42,31 @@ public abstract class Combatant {
         print(this.name + "이(가) 방어 태세를 취했습니다.", true);
     }
 
-    public abstract void useSkill(Skill skill);
+    public void learnSkill(Skill skill) {
+        if(AkashicRecords.getInstance().isSkillExist(skill)) {
+            if(skill.getCanUseLevel() <= this.level) {
+                if(!hasSkill(skill)) {
+                    learnedSkills.add(skill);
+                    print(this.name + "이(가) " + skill.getName() + "을(를) 배웠습니다.", true);
+                } else {
+                    print(this.name + "이(가) 이미 " + skill.getName() + "을(를) 배웠습니다.", true);
+                }
+            } else {
+                print(this.name + "이(가) 레벨이 부족해 " + skill.getName() + "을(를) 배울 수 없습니다.", true);
+            }
+        } else {
+            print(this.name + "이(가) 이미 " + skill.getName() + "을(를) 배웠습니다.", true);
+        }
+    }
 
+    public void learnSkill(String skillName) {
+        learnSkill(AkashicRecords.getInstance().getSkill(skillName));
+    }
 
+    public boolean hasSkill(Skill skill) {
+        return learnedSkills.contains(skill);
+    }
+    
     // 턴 시작시 호출되는 메소드
     public void onTurnStart() {
         // 모든 상태이상 효과 적용
@@ -96,6 +120,7 @@ public abstract class Combatant {
     public int getDef() { return def; }
     public int getLevel() { return level; }
     public int getSpeed() { return speed; }
+    public List<Skill> getLearnedSkills() { return learnedSkills; }
     public void setName(String name) { this.name = name; }
     public void setCurrentHp(int currentHp) { this.currentHp = Math.max(0, currentHp); }
     public void setCurrentMp(int currentMp) { this.currentMp = Math.max(0, currentMp); }

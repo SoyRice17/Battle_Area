@@ -20,7 +20,7 @@ public class Power_Attack implements Skill {
 
     @Override
     public String getName() {
-        return "Power Attack";
+        return "강공";
     }
 
     @Override

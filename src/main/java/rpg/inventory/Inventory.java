@@ -9,7 +9,7 @@ import rpg.item.Equipment;
 import static rpg.util.IO_Manager.print;
 
 public class Inventory {
-    protected List<Item<?>> items;
+    protected List<Item> items;
     protected Character owner;
     protected int itemCount;
     protected int capacity;
@@ -21,7 +21,7 @@ public class Inventory {
         this.owner = owner;
     }
 
-    public void addItem(Item<?> item) {
+    public void addItem(Item item) {
         if (itemCount >= capacity) {
             print(owner.getName() + "의 인벤토리가 가득 찼습니다.", true);
             return;
@@ -30,7 +30,7 @@ public class Inventory {
         itemCount++;
     }
     
-    public void removeItem(Item<?> item) {
+    public void removeItem(Item item) {
         if (items.contains(item)) {
             items.remove(item);
             itemCount--;
@@ -47,7 +47,7 @@ public class Inventory {
         capacity += amount;
     }
 
-    public boolean isThereItem(Item<?> item) {
+    public boolean isThereItem(Item item) {
         return items.contains(item);
     }
 
@@ -62,7 +62,7 @@ public class Inventory {
         return sb.toString();
     }
 
-    public void useItem(Item<?> item) {
+    public void useItem(Item item) {
         if (!isThereItem(item)) {
             print(owner.getName() + "의 인벤토리에 해당 아이템이 없습니다.", true);
             return;
@@ -76,7 +76,7 @@ public class Inventory {
         }
     }
     public void useItem(String itemName) {
-        for (Item<?> item : items) {
+        for (Item item : items) {
             if (item.getName().equals(itemName)) {
                 useItem(item);
                 return;
@@ -85,7 +85,7 @@ public class Inventory {
         print(owner.getName() + "의 인벤토리에 해당 아이템이 없습니다.", true);
     }
 
-    private void consumeItem(Item<?> item) {
+    private void consumeItem(Item item) {
         // 일회용 아이템 사용 로직, 적에게 사용하는 경우 적의 상태 변화 추가
         print(owner.getName() + "이(가) " + item.getName() + "을(를) 사용했습니다.", true);
         removeItem(item);  // 사용 후 인벤토리에서 제거

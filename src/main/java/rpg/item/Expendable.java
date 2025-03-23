@@ -7,7 +7,7 @@ import rpg.skill.enums.TargetType;
  * 소모품 아이템 인터페이스
  * 한 번 사용하면 소모되는 모든 아이템의 기본 인터페이스
  */
-public interface Expendable extends Item<Expendable> {
+public interface Expendable extends Item {
     /**
      * 아이템을 사용했을 때의 효과를 적용
      * @param user 아이템을 사용하는 캐릭터

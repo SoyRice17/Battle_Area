@@ -1,7 +1,6 @@
 package rpg.item;
 
-public interface Item<Type> {
-    Type getType();
+public interface Item {
     int getPrice();
     String getName();
     String getDescription();

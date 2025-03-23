@@ -2,7 +2,7 @@ package rpg.item;
 
 import rpg.item.enums.equipmentsEnums.*;
 
-public interface Equipment extends Item<Equipment> {
+public interface Equipment extends Item {
 
     int getCanUseLevel();
     int getStatBonus();

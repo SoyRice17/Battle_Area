@@ -16,11 +16,6 @@ public class WoodStick implements Weapon {
     private final Rarity rarity = Rarity.COMMON;
 
     @Override
-    public Equipment getType() {
-        return this;
-    }
-
-    @Override
     public int getPrice() {
         return price;
     }

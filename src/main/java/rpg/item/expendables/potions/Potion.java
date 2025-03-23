@@ -28,6 +28,13 @@ public interface Potion extends Expendable {
     int getDuration();
     
     /**
+     * 포션의 효과가 비율(%)로 적용되는지 여부
+     * true인 경우 최대 HP/MP의 백분율로 회복, false인 경우 고정값으로 회복
+     * @return 비율 적용 여부
+     */
+    boolean isPercentageBased();
+    
+    /**
      * 아이템이 적용하는 상태 효과 타입 (없으면 null)
      * @return 상태 효과 타입
      */

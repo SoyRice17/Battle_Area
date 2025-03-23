@@ -7,10 +7,6 @@ import rpg.item.Expendable;
 import rpg.skill.enums.TargetType;
 
 public class LowClassHealingPotion implements Potion {
-    @Override
-    public Expendable getType() {
-        return this;
-    }
     
     @Override
     public int getPrice() {
@@ -56,5 +52,10 @@ public class LowClassHealingPotion implements Potion {
     @Override
     public int getDuration() {
         return 0;
+    }
+
+    @Override
+    public boolean isPercentageBased() {
+        return false;
     }
 }

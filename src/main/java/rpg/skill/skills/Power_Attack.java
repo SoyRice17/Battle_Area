@@ -8,6 +8,7 @@ import rpg.skill.Skill;
 import rpg.skill.enums.SkillEffect;
 import rpg.skill.enums.SkillType;
 import rpg.skill.enums.TargetType;
+import rpg.character.status.*;
 
 public class Power_Attack implements Skill {
     @Override
@@ -15,7 +16,7 @@ public class Power_Attack implements Skill {
         System.out.println(user.getName() + "이(가) 파워 어택을 사용했습니다.");
         target.takeDamage(getPower());
         user.setCurrentMp(user.getCurrentMp() - getCost());
-        // 스턴 이펙트
+        target.addStatusEffect(new StunEffect());
     }
 
     @Override

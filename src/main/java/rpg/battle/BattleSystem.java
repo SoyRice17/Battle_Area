@@ -63,12 +63,20 @@ public class BattleSystem {
             // 2. 전체 전투 참가자 추가
             for (Character character : playerParty) {
                 if (character.isAlive()) {
-                    combatants.add(character);
+                    if (character.isStunned()) {
+                        print(character.getName() + "은(는) 행동불능 상태입니다.", true);
+                    } else {
+                        combatants.add(character);
+                    }
                 }
             }
             for (Monster enemy : enemies) { 
                 if (enemy.isAlive()) {
-                    combatants.add(enemy);
+                    if (enemy.isStunned()) {
+                        print(enemy.getName() + "은(는) 행동불능 상태입니다.", true);
+                    } else {
+                        combatants.add(enemy);
+                    }
                 }
             }
             // 3. 속도에 따라 정렬

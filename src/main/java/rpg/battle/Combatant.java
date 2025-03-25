@@ -40,6 +40,7 @@ public abstract class Combatant {
     protected int speed;
     protected int level;
     protected boolean isDefending;  // 방어 상태 체크
+    protected boolean isStunned;  // 스턴 상태 체크
     protected List<StatusEffect> statusEffects;  // 상태이상 목록
     protected List<Skill> learnedSkills;  // 스킬 목록
     
@@ -159,6 +160,7 @@ public abstract class Combatant {
     public int getDef() { return def; }
     public int getLevel() { return level; }
     public int getSpeed() { return speed; }
+    public boolean isStunned() { return isStunned; }
     public List<Skill> getLearnedSkills() { return learnedSkills; }
     public void setName(String name) { this.name = name; }
     public void setCurrentHp(int currentHp) { this.currentHp = Math.max(0, currentHp); }
@@ -169,4 +171,5 @@ public abstract class Combatant {
     public void setDef(int def) { this.def = def; }
     public void setLevel(int level) { this.level = level; }
     public void setSpeed(int speed) { this.speed = speed; }
+    public void setStunned(boolean isStunned) { this.isStunned = isStunned; }
 }

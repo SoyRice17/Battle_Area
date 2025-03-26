@@ -42,3 +42,11 @@ memo*.txt
 
 ### javadocs ###
 docs/
+
+### test ###
+tests/
+
+sources.txt
+
+### output ###
+out/

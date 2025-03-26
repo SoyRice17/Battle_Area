@@ -40,5 +40,9 @@ public interface Skill {
     SkillType getSkillType();
     TargetType getTargetType();
     boolean canUse(Combatant combatant);
-    void use(Combatant user, Combatant target);
+    /*
+     *  void use(Combatant user, List<Combatant> targets); 
+     *  다중 타겟 게임 시스템 모두 구현후 구현
+     */
+    void use(Combatant user, Combatant target); 
 }

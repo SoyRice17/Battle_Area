@@ -36,9 +36,11 @@ public class AkashicRecords {
         // 생성자
         registerSkill(new BodySlam());
         registerSkill(new Power_Attack());
+        registerSkill(new PoisonTouch());
 
         registerSkillByLevel(new BodySlam());
         registerSkillByLevel(new Power_Attack());
+        registerSkillByLevel(new PoisonTouch());
     }
     
     public static AkashicRecords getInstance() {

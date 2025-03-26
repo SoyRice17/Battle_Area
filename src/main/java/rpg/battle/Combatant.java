@@ -47,6 +47,7 @@ public abstract class Combatant {
     protected Combatant() {
         this.isAlive = true;
         this.statusEffects = new ArrayList<>();
+        this.learnedSkills = new ArrayList<>();
     }
 
     public boolean isAlive() {
@@ -142,7 +143,7 @@ public abstract class Combatant {
             finalDamage = Math.max(0, damage - this.def);  // 일반 방어력만 적용
         }
 
-        this.currentHp -= finalDamage;
+        this.currentHp = Math.max(0, this.currentHp - finalDamage);
         print(this.name + "이(가) " + finalDamage + "의 데미지를 받았습니다.", true);
         
         if (this.currentHp <= 0) {
